@@ -1,0 +1,7 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let f of followers">
+   <a [routerLink]="['/followers',f.id,f.name]" [queryParams]="{ids:f.id}"> {{f.name}}</a>
+   <p>{{f.description}}</p>
+  </li>
+</ul>
+<button (click)="navigateBtn()"></button>

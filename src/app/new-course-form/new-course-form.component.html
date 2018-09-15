@@ -1,0 +1,28 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4">
+<form  #f="ngForm" (ngSubmit)="submited(f.value)">
+  <div class="form-group">
+    <label for="courseName">Course Name</label>
+    <input required ngModel type="text" minlength="5" #courseName="ngModel" name="courseName" id="courseName" class="form-control">
+    <div *ngIf="courseName.touched && !courseName.valid">
+      <div class="alert alert-danger" *ngIf="courseName.errors.required">Required</div>
+      <div class="alert alert-danger" *ngIf="courseName.errors.minlength">not minimumLength</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select ngModel id="category" name="category" class="form-control">
+      <option *ngFor="let category of categorys" [value]="category.id">
+        {{category.category}}
+      </option>
+    </select>
+  </div>
+  <input ngModel name="days" type="checkbox">30 days money return
+  <div>{{f.value|json}}</div>
+  <button [disabled]="f.invalid" type="submit" class="btn btn-primary">submit</button>
+</form>
+</div>
+</div>
+</div>
